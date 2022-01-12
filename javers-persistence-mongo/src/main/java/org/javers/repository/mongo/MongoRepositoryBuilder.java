@@ -13,6 +13,7 @@ public class MongoRepositoryBuilder extends AbstractContainerBuilder {
   private static final Logger logger = LoggerFactory.getLogger(MongoRepositoryBuilder.class);
   private String snapshotCollectionName;
   private Integer cacheSize;
+  private MongoDialect dialect;
   private MongoDatabase mongoDatabase;
 
   public MongoRepositoryBuilder() {
@@ -34,6 +35,11 @@ public class MongoRepositoryBuilder extends AbstractContainerBuilder {
     return this;
   }
 
+  public MongoRepositoryBuilder withDialect(MongoDialect dialect) {
+    this.dialect = dialect;
+    return this;
+  }
+
   public MongoRepositoryBuilder withMongoDatabase(MongoDatabase mongoDatabase) {
     this.mongoDatabase = mongoDatabase;
     return this;
@@ -43,10 +49,11 @@ public class MongoRepositoryBuilder extends AbstractContainerBuilder {
     logger.info("starting MongoRepository...");
     logger.info("  snapshotCollection name:              {}", snapshotCollectionName);
     logger.info("  cacheSize              :              {}", cacheSize);
+    logger.info("  dialect                :              {}", dialect);
     bootContainer();
 
     MongoRepositoryConfiguration config = new MongoRepositoryConfiguration(snapshotCollectionName,
-        cacheSize);
+        cacheSize, dialect);
     addComponent(config);
 
     addComponent(mongoDatabase);
