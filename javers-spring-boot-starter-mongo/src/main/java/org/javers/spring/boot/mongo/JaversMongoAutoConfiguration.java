@@ -5,6 +5,7 @@ import com.mongodb.client.MongoDatabase;
 import org.javers.core.Javers;
 import org.javers.core.JaversBuilder;
 import org.javers.repository.mongo.MongoRepository;
+import org.javers.repository.mongo.MongoRepositoryBuilder;
 import org.javers.spring.RegisterJsonTypeAdaptersPlugin;
 import org.javers.spring.auditable.*;
 import org.javers.spring.auditable.aspect.JaversAuditableAspect;
@@ -90,7 +91,9 @@ public class JaversMongoAutoConfiguration {
             logger.info("enabling Amazon DocumentDB compatibility");
             return mongoRepositoryWithDocumentDBCompatibility(mongoDatabase, javersMongoProperties.getSnapshotsCacheSize());
         }
-        return new MongoRepository(mongoDatabase, javersMongoProperties.getSnapshotsCacheSize());
+        return MongoRepositoryBuilder.mongoRepository().withMongoDatabase(mongoDatabase).build();
+
+        // FIXME return new MongoRepository(mongoDatabase, javersMongoProperties.getSnapshotsCacheSize());
     }
 
     private MongoDatabase initJaversMongoDatabase() {
