@@ -91,9 +91,7 @@ public class JaversMongoAutoConfiguration {
             logger.info("enabling Amazon DocumentDB compatibility");
             return mongoRepositoryWithDocumentDBCompatibility(mongoDatabase, javersMongoProperties.getSnapshotsCacheSize());
         }
-        return MongoRepositoryBuilder.mongoRepository().withMongoDatabase(mongoDatabase).build();
-
-        // FIXME return new MongoRepository(mongoDatabase, javersMongoProperties.getSnapshotsCacheSize());
+        return new MongoRepository(mongoDatabase, javersMongoProperties.getSnapshotsCacheSize());
     }
 
     private MongoDatabase initJaversMongoDatabase() {
