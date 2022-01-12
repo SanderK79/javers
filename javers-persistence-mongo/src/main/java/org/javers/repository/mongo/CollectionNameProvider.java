@@ -2,7 +2,7 @@ package org.javers.repository.mongo;
 
 public class CollectionNameProvider {
 
-  private static final String DEFAULT_SNAPSHOT_COLLECTION_NAME = "jv_snapshot";
+  private static final String DEFAULT_SNAPSHOT_COLLECTION_NAME = "jv_snapshots";
   private final MongoRepositoryConfiguration configuration;
 
   public CollectionNameProvider(MongoRepositoryConfiguration configuration) {

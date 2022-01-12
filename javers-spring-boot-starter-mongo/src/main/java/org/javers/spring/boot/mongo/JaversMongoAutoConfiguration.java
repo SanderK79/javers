@@ -5,7 +5,6 @@ import com.mongodb.client.MongoDatabase;
 import org.javers.core.Javers;
 import org.javers.core.JaversBuilder;
 import org.javers.repository.mongo.MongoRepository;
-import org.javers.repository.mongo.MongoRepositoryBuilder;
 import org.javers.spring.RegisterJsonTypeAdaptersPlugin;
 import org.javers.spring.auditable.*;
 import org.javers.spring.auditable.aspect.JaversAuditableAspect;
