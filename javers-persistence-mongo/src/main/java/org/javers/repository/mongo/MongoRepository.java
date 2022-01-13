@@ -37,7 +37,7 @@ import static org.javers.repository.mongo.MongoSchemaManager.*;
  * @author pawel szymczyk
  */
 public class MongoRepository implements JaversRepository, ConfigurationAware {
-    private static final int DEFAULT_CACHE_SIZE = 5_000;
+    private final static int DEFAULT_CACHE_SIZE = 5000;
     private final static double COMMIT_ID_PRECISION = 0.005;
     private static final int DESC = -1;
     private final MongoSchemaManager mongoSchemaManager;
